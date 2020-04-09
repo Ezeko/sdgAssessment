@@ -10,36 +10,43 @@ const covid19ImpactEstimator = (data) => {
 
   const availableHospitalBeds = (35 / 100) * data.totalHospitalBeds;
 
-  const casesForICUByRequestedTime = (5/100) * infectionsByRequestedTime;
+  const casesForICUByRequestedTime = (5 / 100) * infectionsByRequestedTime;
   const casesForICUByRequestedTimeSevere = (5 / 100) * infectionsByRequestedTimeSevere;
 
   const casesForVentilatorsByRequestedTime = (2 / 100) * infectionsByRequestedTime;
   const casesForVentilatorsByRequestedTimeSevere = (2 / 100) * infectionsByRequestedTimeSevere;
 
-  const dollarsInFlight = (infectionsByRequestedTime * data.region.avgDailyIncomePopulation) * 
-    data.region.avgDailyIncomeInUSD * data.timeToElapse;
-  const dollarsInFlightSevere = (infectionsByRequestedTimeSevere * data.region.avgDailyIncomePopulation) 
+  const dollarsInFlight = (infectionsByRequestedTime * data.region.avgDailyIncomePopulation) 
+  * data.region.avgDailyIncomeInUSD * data.timeToElapse;
+  const dollarsInFlightSevere = (infectionsByRequestedTimeSevere 
+    * data.region.avgDailyIncomePopulation) 
     * data.region.avgDailyIncomeInUSD * data.timeToElapse;
 
 
-  const impact = {currentlyInfected, infectionsByRequestedTime, hospitalBedsByRequestedTime: availableHospitalBeds - severeCasesByRequestedTime, 
-    severeCasesByRequestedTime,casesForICUByRequestedTime,
-    casesForVentilatorsByRequestedTime, dollarsInFlight
+  const impact = {
+      currentlyInfected, infectionsByRequestedTime, 
+      hospitalBedsByRequestedTime: availableHospitalBeds - severeCasesByRequestedTime, 
+      severeCasesByRequestedTime,casesForICUByRequestedTime,
+      casesForVentilatorsByRequestedTime, dollarsInFlight
 }
-  const severeImpact = { currentlyinfected: severeInfection, 
-    infectionsByRequestedTime: infectionsByRequestedTimeSevere,
-    hospitalBedsByRequestedTime: availableHospitalBeds - severeCasesByRequestedTimeSevere,
-    severeCasesByRequestedTime: severeCasesByRequestedTimeSevere,
-    casesForICUByRequestedTime: casesForICUByRequestedTimeSevere, 
-    casesForVentilatorsByRequestedTime: casesForVentilatorsByRequestedTimeSevere,
-    dollarsInFlight: dollarsInFlightSevere
+  const severeImpact = {
+      currentlyinfected: severeInfection, 
+      infectionsByRequestedTime: infectionsByRequestedTimeSevere,
+      hospitalBedsByRequestedTime: availableHospitalBeds - severeCasesByRequestedTimeSevere,
+      severeCasesByRequestedTime: severeCasesByRequestedTimeSevere,
+      casesForICUByRequestedTime: casesForICUByRequestedTimeSevere, 
+      casesForVentilatorsByRequestedTime: casesForVentilatorsByRequestedTimeSevere,
+      dollarsInFlight: dollarsInFlightSevere
 
 }
 
-return  output = {data, impact, severeImpact}
+return  output = {
+    data, impact, severeImpact
+}
 };
 
-/*const data = {
+/*
+const data = {
     region: {
     name: "Africa",
     avgAge: 19.7,
@@ -53,6 +60,7 @@ return  output = {data, impact, severeImpact}
     totalHospitalBeds: 1380614
 }
 
-console. log(covid19ImpactEstimator(data))*/
+console. log(covid19ImpactEstimator(data))
+*/
 
 export default covid19ImpactEstimator;
