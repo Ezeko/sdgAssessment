@@ -1,32 +1,37 @@
 const covid19ImpactEstimator = (data) => {
-  const currentlyInfected = data.reportedCases * 10
-  const severeInfection = data.reportedCases * 50
+  const currentlyInfected = data.reportedCases * 10;
+  const severeInfection = data.reportedCases * 50;
 
-  const infectionsByRequestedTime = currentlyInfected * (2 ** (data.timeToElapse/3))
-  const infectionsByRequestedTimeSevere = severeInfection * (2 ** (data.timeToElapse/3))
+  const infectionsByRequestedTime = currentlyInfected * (2 ** (data.timeToElapse / 3));
+  const infectionsByRequestedTimeSevere = severeInfection * (2 ** (data.timeToElapse / 3));
 
-  const severeCasesByRequestedTime = (15/100) * infectionsByRequestedTime
-  const severeCasesByRequestedTimeSevere = (15/100) * infectionsByRequestedTimeSevere
+  const severeCasesByRequestedTime = (15 / 100) * infectionsByRequestedTime;
+  const severeCasesByRequestedTimeSevere = (15 / 100) * infectionsByRequestedTimeSevere;
 
-  const availableHospitalBeds = (35/100) * data.totalHospitalBeds
+  const availableHospitalBeds = (35 / 100) * data.totalHospitalBeds;
 
-  const casesForICUByRequestedTime = (5/100) * infectionsByRequestedTime
-  const casesForICUByRequestedTimeSevere = (5/100) * infectionsByRequestedTimeSevere
+  const casesForICUByRequestedTime = (5/100) * infectionsByRequestedTime;
+  const casesForICUByRequestedTimeSevere = (5 / 100) * infectionsByRequestedTimeSevere;
 
-  const casesForVentilatorsByRequestedTime = (2/100) * infectionsByRequestedTime
-  const casesForVentilatorsByRequestedTimeSevere = (2/100) * infectionsByRequestedTimeSevere
+  const casesForVentilatorsByRequestedTime = (2 / 100) * infectionsByRequestedTime;
+  const casesForVentilatorsByRequestedTimeSevere = (2 / 100) * infectionsByRequestedTimeSevere;
 
-  const dollarsInFlight = (infectionsByRequestedTime * data.region.avgDailyIncomePopulation) * data.region.avgDailyIncomeInUSD * data.timeToElapse
-  const dollarsInFlightSevere = (infectionsByRequestedTimeSevere * data.region.avgDailyIncomePopulation) * data.region.avgDailyIncomeInUSD * data.timeToElapse
+  const dollarsInFlight = (infectionsByRequestedTime * data.region.avgDailyIncomePopulation) * 
+    data.region.avgDailyIncomeInUSD * data.timeToElapse;
+  const dollarsInFlightSevere = (infectionsByRequestedTimeSevere * data.region.avgDailyIncomePopulation) 
+    * data.region.avgDailyIncomeInUSD * data.timeToElapse;
 
 
-  const impact = {currentlyInfected, infectionsByRequestedTime, hospitalBedsByRequestedTime: availableHospitalBeds - severeCasesByRequestedTime, severeCasesByRequestedTime,
-    casesForICUByRequestedTime,
+  const impact = {currentlyInfected, infectionsByRequestedTime, hospitalBedsByRequestedTime: availableHospitalBeds - severeCasesByRequestedTime, 
+    severeCasesByRequestedTime,casesForICUByRequestedTime,
     casesForVentilatorsByRequestedTime, dollarsInFlight
 }
-  const severeImpact = { currentlyinfected: severeInfection, infectionsByRequestedTime: infectionsByRequestedTimeSevere,
-    hospitalBedsByRequestedTime: availableHospitalBeds - severeCasesByRequestedTimeSevere,severeCasesByRequestedTime: severeCasesByRequestedTimeSevere,
-    casesForICUByRequestedTime: casesForICUByRequestedTimeSevere, casesForVentilatorsByRequestedTime: casesForVentilatorsByRequestedTimeSevere,
+  const severeImpact = { currentlyinfected: severeInfection, 
+    infectionsByRequestedTime: infectionsByRequestedTimeSevere,
+    hospitalBedsByRequestedTime: availableHospitalBeds - severeCasesByRequestedTimeSevere,
+    severeCasesByRequestedTime: severeCasesByRequestedTimeSevere,
+    casesForICUByRequestedTime: casesForICUByRequestedTimeSevere, 
+    casesForVentilatorsByRequestedTime: casesForVentilatorsByRequestedTimeSevere,
     dollarsInFlight: dollarsInFlightSevere
 
 }
