@@ -1,4 +1,4 @@
-const covid19ImpactEstimator = (data) => {
+const dailyEstimator = (data) => {
   const currentlyInfected = data.reportedCases * 10;
   const severeInfection = data.reportedCases * 50;
 
@@ -20,8 +20,8 @@ const covid19ImpactEstimator = (data) => {
   const dollarsInFlight = (infectionsByRequestedTime * data.region.avgDailyIncomePopulation)
   * data.region.avgDailyIncomeInUSD * data.timeToElapse;
   const dollarsInFlightSevere = (infectionsByRequestedTimeSevere
-    * data.region.avgDailyIncomePopulation)
-    * data.region.avgDailyIncomeInUSD * data.timeToElapse;
+  * data.region.avgDailyIncomePopulation)
+  * data.region.avgDailyIncomeInUSD * data.timeToElapse;
 
 
   const impact = {
@@ -46,8 +46,14 @@ const covid19ImpactEstimator = (data) => {
     data, impact, severeImpact
   };
   return output;
+}
+
+
+const covid19ImpactEstimator = (data) => {
+  weeklyEstimator(data); monthlyEstimator(data);
+  dailyEstimator(data)
 };
-const weekEstimate = (data) => {
+const weeklyEstimator = (data) => {
   const currentlyInfected = data.reportedCases * 10;
   const severeInfection = data.reportedCases * 50;
 
@@ -164,7 +170,6 @@ const data = {
   population: 66622705,
   totalHospitalBeds: 1380614
 };
-weekEstimate(data); monthlyEstimator(data);
 /*
 console. log(covid19ImpactEstimator(data))
 */
