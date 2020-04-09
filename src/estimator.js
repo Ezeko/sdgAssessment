@@ -16,22 +16,22 @@ const covid19ImpactEstimator = (data) => {
   const casesForVentilatorsByRequestedTime = (2 / 100) * infectionsByRequestedTime;
   const casesForVentilatorsByRequestedTimeSevere = (2 / 100) * infectionsByRequestedTimeSevere;
 
-  const dollarsInFlight = (infectionsByRequestedTime * data.region.avgDailyIncomePopulation) 
+  const dollarsInFlight = (infectionsByRequestedTime * data.region.avgDailyIncomePopulation)
   * data.region.avgDailyIncomeInUSD * data.timeToElapse;
-  const dollarsInFlightSevere = (infectionsByRequestedTimeSevere 
-    * data.region.avgDailyIncomePopulation) 
+  const dollarsInFlightSevere = (infectionsByRequestedTimeSevere
+    * data.region.avgDailyIncomePopulation)
     * data.region.avgDailyIncomeInUSD * data.timeToElapse;
 
 
   const impact = {
     currentlyInfected,
-    infectionsByRequestedTime, 
-    hospitalBedsByRequestedTime: availableHospitalBeds - severeCasesByRequestedTime, 
+    infectionsByRequestedTime,
+    hospitalBedsByRequestedTime: availableHospitalBeds - severeCasesByRequestedTime,
     severeCasesByRequestedTime,
     casesForICUByRequestedTime,
     casesForVentilatorsByRequestedTime,
-    dollarsInFlight,
-}
+    dollarsInFlight
+  };
   const severeImpact = {
     currentlyinfected: severeInfection,
     infectionsByRequestedTime: infectionsByRequestedTimeSevere,
@@ -39,12 +39,12 @@ const covid19ImpactEstimator = (data) => {
     severeCasesByRequestedTime: severeCasesByRequestedTimeSevere,
     casesForICUByRequestedTime: casesForICUByRequestedTimeSevere,
     casesForVentilatorsByRequestedTime: casesForVentilatorsByRequestedTimeSevere,
-    dollarsInFlight: dollarsInFlightSevere,
-}
-
-return  output = {
+    dollarsInFlight: dollarsInFlightSevere
+  };
+  const output = {
     data, impact, severeImpact
-}
+  };
+  return output;
 };
 
 /*
