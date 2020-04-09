@@ -150,7 +150,7 @@ const monthlyEstimator = (data) => {
   };
   return output;
 };
-  
+
 
 const covid19ImpactEstimator = (data) => {
   weeklyEstimator(data); monthlyEstimator(data);
@@ -158,7 +158,7 @@ const covid19ImpactEstimator = (data) => {
 };
 
 
-/*const data = {
+/*  const data = {
   region: {
     name: 'Africa',
     avgAge: 19.7,
