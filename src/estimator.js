@@ -6,7 +6,6 @@ const covid19ImpactEstimator = (data) => {
   const infectionsByRequestedTimeSevere = severeInfection * (2 ** (data.timeToElapse / 3));
 
 
-
   const severeCasesByRequestedTime = (15 / 100) * infectionsByRequestedTime;
   const severeCasesByRequestedTimeSevere = (15 / 100) * infectionsByRequestedTimeSevere;
 
@@ -49,7 +48,7 @@ const covid19ImpactEstimator = (data) => {
   return output;
 
 };
-const weekEstimate = (data)=>{
+const weekEstimate = (data) => {
   const currentlyInfected = data.reportedCases * 10;
   const severeInfection = data.reportedCases * 50;
 
@@ -100,7 +99,7 @@ const weekEstimate = (data)=>{
   return output;
 }
 
-  const monthlyEstimator = (data)=>{
+  const monthlyEstimator = (data) => {
     const currentlyInfected = data.reportedCases * 10;
     const severeInfection = data.reportedCases * 50;
   
@@ -151,8 +150,10 @@ const weekEstimate = (data)=>{
     };
     return output;    
   }
+
   
-/*
+  
+
 const data = {
     region: {
     name: "Africa",
@@ -166,7 +167,8 @@ const data = {
     population: 66622705,
     totalHospitalBeds: 1380614
 }
-
+console.log(weekEstimate(data), monthlyEstimator(data))
+/*
 console. log(covid19ImpactEstimator(data))
 */
 
