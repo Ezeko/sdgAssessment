@@ -134,7 +134,7 @@ const monthlyEstimator = (data) => {
     casesForICUByRequestedTime,
     casesForVentilatorsByRequestedTime,
     dollarsInFlight
-    };
+  };
   const severeImpact = {
     currentlyinfected: severeInfection,
     infectionsByRequestedTime: infectionsByRequestedTimeSevere,
@@ -147,23 +147,23 @@ const monthlyEstimator = (data) => {
   const output = {
     data, impact, severeImpact
   };
-  return output;    
+  return output;
 };
-  
+ 
 
 const data = {
-    region: {
-    name: 'Africa',
-    avgAge: 19.7,
-    avgDailyIncomeInUSD: 5,
-    avgDailyIncomePopulation: 0.71
-    },
-    periodType: 'days',
-    timeToElapse: 58,
-    reportedCases: 674,
-    population: 66622705,
-    totalHospitalBeds: 1380614
-}
+  region: {
+  name: 'Africa',
+  avgAge: 19.7,
+  avgDailyIncomeInUSD: 5,
+  avgDailyIncomePopulation: 0.71
+  },
+  periodType: 'days',
+  timeToElapse: 58,
+  reportedCases: 674,
+  population: 66622705,
+  totalHospitalBeds: 1380614
+};
 weekEstimate(data); monthlyEstimator(data);
 /*
 console. log(covid19ImpactEstimator(data))
