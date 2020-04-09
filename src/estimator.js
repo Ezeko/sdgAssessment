@@ -5,14 +5,6 @@ const covid19ImpactEstimator = (data) => {
   const infectionsByRequestedTime = currentlyInfected * (2 ** (data.timeToElapse / 3));
   const infectionsByRequestedTimeSevere = severeInfection * (2 ** (data.timeToElapse / 3));
 
-  const infectionsByRequestedTimeInWeeks = currentlyInfected * (2 ** ((data.timeToElapse / 7) / 3));
-  const infectionsByRequestedTimeSevereInWeeks = severeInfection
-  * (2 ** ((data.timeToElapse / 7) / 3));
-
-  const infectionsByRequestedTimeInMonths = currentlyInfected
-  * (2 ** ((data.timeToElapse / 30) / 3));
-  const infectionsByRequestedTimeSevereInMonths = severeInfection
-  * (2 ** ((data.timeToElapse / 30) / 3));
 
 
   const severeCasesByRequestedTime = (15 / 100) * infectionsByRequestedTime;
@@ -36,8 +28,6 @@ const covid19ImpactEstimator = (data) => {
   const impact = {
     currentlyInfected,
     infectionsByRequestedTime,
-    infectionsByRequestedTimeInWeeks,
-    infectionsByRequestedTimeInMonths,
     hospitalBedsByRequestedTime: availableHospitalBeds - severeCasesByRequestedTime,
     severeCasesByRequestedTime,
     casesForICUByRequestedTime,
@@ -59,7 +49,7 @@ const covid19ImpactEstimator = (data) => {
   return output;
 
 };
-const weekEstimate = ()=>{
+const weekEstimate = (data)=>{
   const currentlyInfected = data.reportedCases * 10;
   const severeInfection = data.reportedCases * 50;
 
@@ -110,7 +100,7 @@ const weekEstimate = ()=>{
   return output;
 }
 
-  const monthlyEstimator = ()=>{
+  const monthlyEstimator = (data)=>{
     const currentlyInfected = data.reportedCases * 10;
     const severeInfection = data.reportedCases * 50;
   
