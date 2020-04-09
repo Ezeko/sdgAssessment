@@ -5,11 +5,11 @@ const covid19ImpactEstimator = (data) => {
   //    convert time to days
   if (data.periodType === 'years') {
     time = data.timeToElapse / 365;
-  }else if (data.periodType === 'months') {
+  } else if (data.periodType === 'months') {
     time = data.timeToElapse / 30;
-  }else if (data.periodType === 'weeks') {
+  } else if (data.periodType === 'weeks') {
     time = data.timeToElapse / 7;
-  }else{
+  } else{
     time = data.timeToElapse;
   }
   const infectionsByRequestedTime = currentlyInfected * (2 ** (time / 3));
