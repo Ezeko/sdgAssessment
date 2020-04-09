@@ -46,13 +46,8 @@ const dailyEstimator = (data) => {
     data, impact, severeImpact
   };
   return output;
-}
-
-
-const covid19ImpactEstimator = (data) => {
-  weeklyEstimator(data); monthlyEstimator(data);
-  dailyEstimator(data)
 };
+
 const weeklyEstimator = (data) => {
   const currentlyInfected = data.reportedCases * 10;
   const severeInfection = data.reportedCases * 50;
@@ -76,8 +71,8 @@ const weeklyEstimator = (data) => {
   const dollarsInFlight = (infectionsByRequestedTime * data.region.avgDailyIncomePopulation)
   * data.region.avgDailyIncomeInUSD * data.timeToElapse;
   const dollarsInFlightSevere = (infectionsByRequestedTimeSevere
-    * data.region.avgDailyIncomePopulation)
-    * data.region.avgDailyIncomeInUSD * data.timeToElapse;
+  * data.region.avgDailyIncomePopulation)
+  * data.region.avgDailyIncomeInUSD * data.timeToElapse;
 
 
   const impact = {
@@ -155,9 +150,15 @@ const monthlyEstimator = (data) => {
   };
   return output;
 };
+  
+
+const covid19ImpactEstimator = (data) => {
+  weeklyEstimator(data); monthlyEstimator(data);
+  dailyEstimator(data);
+};
 
 
-const data = {
+/*const data = {
   region: {
     name: 'Africa',
     avgAge: 19.7,
