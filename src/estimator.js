@@ -153,12 +153,11 @@ const monthlyEstimator = (data) => {
 
 
 const covid19ImpactEstimator = (data) => {
-  weeklyEstimator(data); monthlyEstimator(data);
   dailyEstimator(data);
 };
 
 
-/*  const data = {
+const data = {
   region: {
     name: 'Africa',
     avgAge: 19.7,
@@ -171,6 +170,8 @@ const covid19ImpactEstimator = (data) => {
   population: 66622705,
   totalHospitalBeds: 1380614
 };
+
+weeklyEstimator(data); monthlyEstimator(data);
 /*
 console. log(covid19ImpactEstimator(data))
 */
