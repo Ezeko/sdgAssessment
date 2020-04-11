@@ -2,8 +2,8 @@ const express = require('express'); //  import express
 const bodyParser = require('body-parser');
 const cors = require('cors');
 // const path = require('path');
-const home = require('./src/backend/controllers/HomeController');
-const EstimateController = require('./src/backend/controllers/EstimateController');
+const home = require('./backend/controllers/HomeController');
+const EstimateController = require('./backend/controllers/EstimateController');
 
 const app = express();
 
