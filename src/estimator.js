@@ -42,10 +42,10 @@ const dailyEstimator = (data) => {
     casesForVentilatorsByRequestedTime: casesForVentilatorsByRequestedTimeSevere,
     dollarsInFlight: dollarsInFlightSevere
   };
-  const output = {
+  const dailyImpactEstimation = {
     data, impact, severeImpact
   };
-  return output;
+  return dailyImpactEstimation;
 };
 
 const weeklyEstimator = (data) => {
@@ -93,10 +93,10 @@ const weeklyEstimator = (data) => {
     casesForVentilatorsByRequestedTime: casesForVentilatorsByRequestedTimeSevere,
     dollarsInFlight: dollarsInFlightSevere
   };
-  const output = {
+  const weeklyImpactEstimation = {
     data, impact, severeImpact
   };
-  return output;
+  return weeklyImpactEstimation;
 };
 
 const monthlyEstimator = (data) => {
@@ -145,20 +145,21 @@ const monthlyEstimator = (data) => {
     casesForVentilatorsByRequestedTime: casesForVentilatorsByRequestedTimeSevere,
     dollarsInFlight: dollarsInFlightSevere
   };
-  const output = {
+  const monthlyImpactEstimation = {
     data, impact, severeImpact
   };
-  return output;
+  return monthlyImpactEstimation;
 };
 
 
 const covid19ImpactEstimator = (data) => {
-  weeklyEstimator(data); monthlyEstimator(data);
   dailyEstimator(data);
+  weeklyEstimator(data);
+  monthlyEstimator(data);
 };
 
-
-/*  const data = {
+/*
+const data = {
   region: {
     name: 'Africa',
     avgAge: 19.7,
@@ -171,6 +172,8 @@ const covid19ImpactEstimator = (data) => {
   population: 66622705,
   totalHospitalBeds: 1380614
 };
+
+weeklyEstimator(data); monthlyEstimator(data);
 /*
 console. log(covid19ImpactEstimator(data))
 */
