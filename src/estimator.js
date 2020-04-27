@@ -1,3 +1,6 @@
+let monthlyImpactEstimation;
+let dailyImpactEstimation;
+let weeklyImpactEstimation;
 const dailyEstimator = (data) => {
   const currentlyInfected = data.reportedCases * 10;
   const severeInfection = data.reportedCases * 50;
@@ -42,11 +45,10 @@ const dailyEstimator = (data) => {
     casesForVentilatorsByRequestedTime: casesForVentilatorsByRequestedTimeSevere,
     dollarsInFlight: dollarsInFlightSevere
   };
-  const dailyImpactEstimation = {
+  dailyImpactEstimation = {
     data, impact, severeImpact
   };
-  console.log(dailyImpactEstimation);
-  return dailyImpactEstimation;
+  // console.log(dailyImpactEstimation);
 };
 
 const weeklyEstimator = (data) => {
@@ -96,11 +98,10 @@ const weeklyEstimator = (data) => {
     casesForVentilatorsByRequestedTime: casesForVentilatorsByRequestedTimeSevereWeek,
     dollarsInFlight: dollarsInFlightSevereWeek
   };
-  const weeklyImpactEstimation = {
+  weeklyImpactEstimation = {
     data, impactWeek, severeImpactWeek
   };
-  console.log(weeklyImpactEstimation);
-  return weeklyImpactEstimation;
+  // console.log(weeklyImpactEstimation);
 };
 
 const monthlyEstimator = (data) => {
@@ -152,20 +153,25 @@ const monthlyEstimator = (data) => {
     dollarsInFlight: dollarsInFlightSevereMonth
   };
 
-  const monthlyImpactEstimation = {
+  monthlyImpactEstimation = {
     data, impact, severeImpact
   };
   // console.log(monthlyImpactEstimation);
-  return monthlyImpactEstimation;
 };
 
 
 const covid19ImpactEstimator = (data) => {
-  console.log((data));
+  // console.log((data));
   dailyEstimator(data);
   weeklyEstimator(data);
   monthlyEstimator(data);
+  const finalImpact = {
+    daily: dailyImpactEstimation, weekly: weeklyImpactEstimation, monthly: monthlyImpactEstimation 
+  };
+
+  return finalImpact;
 };
+
 
 /*
 const data = {
