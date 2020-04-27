@@ -1,4 +1,4 @@
-const estimateCalculator = require('../../estimator');
+const estimateCalculator = require('../../src/estimator');
 /**
  * return estimated results
  * @param {object} req
@@ -7,11 +7,13 @@ const estimateCalculator = require('../../estimator');
  */
 
 exports.estimator = (req, res) => {
+  console.log((req.body));
   const result = estimateCalculator(req.body);
-  if (res.staus === 200) {
-    return res.staus(200).json(result);
+  console.log(`estimate result ${result}`);
+  if (result) {
+    return res.status(200).json(result);
   }
-  return res.staus(404).json({ message: 'An error occur' });
+  return res.status(404).json({ message: 'An error occur' });
 };
 
 
@@ -42,7 +44,7 @@ exports.estimateInXml = (req, res) => {
     res.contentType('application/xml');
     res.sendFile(OBJtoXML(result));
   } else {
-    res.staus(404);
+    res.status(404);
     res.contentType('application/xml');
     res.sendFile(OBJtoXML({ message: 'An error occur' }));
   }
